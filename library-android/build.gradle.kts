@@ -1,10 +1,6 @@
-version = LibraryAndroidCoordinates.LIBRARY_VERSION
-
 plugins {
     id("com.android.library")
     kotlin("android")
-    id("maven-publish")
-    publish
 }
 
 android {
@@ -14,8 +10,8 @@ android {
         minSdkVersion(Sdk.MIN_SDK_VERSION)
         targetSdkVersion(Sdk.TARGET_SDK_VERSION)
 
-        versionCode = LibraryAndroidCoordinates.LIBRARY_VERSION_CODE
-        versionName = LibraryAndroidCoordinates.LIBRARY_VERSION
+        versionCode = AppCoordinates.APP_VERSION_CODE
+        versionName = AppCoordinates.APP_VERSION_NAME
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
