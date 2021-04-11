@@ -1,4 +1,5 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import io.gitlab.arturbosch.detekt.Detekt
 
 plugins {
     id("com.android.application") apply false
@@ -13,6 +14,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        jcenter()
     }
 }
 
@@ -57,5 +59,10 @@ tasks {
         rejectVersionIf {
             candidate.version.isStableVersion().not()
         }
+    }
+
+    withType<Detekt>().configureEach {
+        // Target version of the generated JVM bytecode. It is used for type resolution.
+        jvmTarget = "1.8"
     }
 }

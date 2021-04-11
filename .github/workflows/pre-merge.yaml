@@ -22,7 +22,11 @@ jobs:
             ~/.gradle/caches/
             ~/.gradle/wrapper/
           key: cache-gradle
-      - name: Run Gradle tasks
-        run: ./gradlew build check --continue
+      - name: Run ktlint
+        run: ./gradlew ktlintCheck
+      - name: Run detekt
+        run: ./gradlew detekt
+      - name: Run build apk
+        run: ./gradlew assemble
       - name: Stop Gradle
         run: ./gradlew --stop
