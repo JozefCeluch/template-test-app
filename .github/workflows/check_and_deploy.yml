@@ -1,4 +1,4 @@
-name: Publish Release
+name: Build and publish release to Firebase App Distribution
 on:
   push:
     tags:
@@ -35,10 +35,11 @@ jobs:
         with:
           name: release.apk
           path: ${{steps.sign_app.outputs.signedReleaseFile}}
-      - uses: actions/upload-artifact@master
-        with:
-          name: mapping.txt
-          path: app/build/outputs/mapping/release/mapping.txt
+  # Upload mappings if minification is enabled for release build
+  #      - uses: actions/upload-artifact@master
+  #        with:
+  #          name: mapping.txt
+  #          path: app/build/outputs/mapping/release/mapping.txt
   deploy-firebase:
     needs: [ build ]
     runs-on: ubuntu-latest
