@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    compileSdkVersion(Sdk.COMPILE_SDK_VERSION)
+    compileSdkVersion(Versions.Sdk.compileSdk)
 
     defaultConfig {
-        minSdkVersion(Sdk.MIN_SDK_VERSION)
-        targetSdkVersion(Sdk.TARGET_SDK_VERSION)
+        minSdkVersion(Versions.Sdk.minSdk)
+        targetSdkVersion(Versions.Sdk.targetSdk)
 
-        versionCode = AppCoordinates.APP_VERSION_CODE
-        versionName = AppCoordinates.APP_VERSION_NAME
+        versionCode = Versions.App.versionCode
+        versionName = Versions.App.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -41,11 +41,11 @@ android {
 dependencies {
     implementation(kotlin("stdlib-jdk7"))
 
-    implementation(SupportLibs.ANDROIDX_APPCOMPAT)
-    implementation(SupportLibs.ANDROIDX_CORE_KTX)
+    implementation(SupportLibs.androidxAppcompat)
+    implementation(SupportLibs.androidxCoreKtx)
 
-    testImplementation(TestingLib.JUNIT)
+    testImplementation(TestingLib.junit)
 
-    androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_RUNNER)
-    androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_EXT_JUNIT)
+    androidTestImplementation(AndroidTestingLib.androidxTestRunner)
+    androidTestImplementation(AndroidTestingLib.androidxExtJunit)
 }

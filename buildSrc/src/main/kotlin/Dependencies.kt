@@ -1,39 +1,41 @@
-object Sdk {
-    const val MIN_SDK_VERSION = 26
-    const val TARGET_SDK_VERSION = 30
-    const val COMPILE_SDK_VERSION = 30
-}
 
 object Versions {
-    const val ANDROIDX_TEST_EXT = "1.1.2"
-    const val ANDROIDX_TEST = "1.3.0"
-    const val APPCOMPAT = "1.2.0"
-    const val CONSTRAINT_LAYOUT = "2.0.4"
-    const val CORE_KTX = "1.3.2"
-    const val ESPRESSO_CORE = "3.3.0"
-    const val JUNIT = "4.13.2"
-    const val KTLINT = "0.40.0"
-}
+    object App {
+        const val versionName = "1.0.0"
+        const val versionCode = 1
+    }
 
-object BuildPluginsVersion {
-    const val DETEKT = "1.16.0"
-    const val KTLINT = "10.0.0"
-    const val VERSIONS_PLUGIN = "0.38.0"
+    object Sdk {
+        const val minSdk = 26
+        const val targetSdk = 30
+        const val compileSdk = 30
+    }
+
+    object BuildPlugins {
+        const val detekt = "1.16.0"
+        const val ktlint = "10.0.0"
+        const val versions = "0.38.0"
+    }
+
+   object Libraries {
+    const val androidxTest = "1.3.0"
+    const val ktlint = "0.40.0"
+   }
 }
 
 object SupportLibs {
-    const val ANDROIDX_APPCOMPAT = "androidx.appcompat:appcompat:${Versions.APPCOMPAT}"
-    const val ANDROIDX_CONSTRAINT_LAYOUT = "com.android.support.constraint:constraint-layout:${Versions.CONSTRAINT_LAYOUT}"
-    const val ANDROIDX_CORE_KTX = "androidx.core:core-ktx:${Versions.CORE_KTX}"
+    const val androidxAppcompat = "androidx.appcompat:appcompat:1.2.0"
+    const val androidxConstraintLayout = "com.android.support.constraint:constraint-layout:2.0.4"
+    const val androidxCoreKtx = "androidx.core:core-ktx:1.3.2"
 }
 
 object TestingLib {
-    const val JUNIT = "junit:junit:${Versions.JUNIT}"
+    const val junit = "junit:junit:4.13.2"
 }
 
 object AndroidTestingLib {
-    const val ANDROIDX_TEST_RULES = "androidx.test:rules:${Versions.ANDROIDX_TEST}"
-    const val ANDROIDX_TEST_RUNNER = "androidx.test:runner:${Versions.ANDROIDX_TEST}"
-    const val ANDROIDX_TEST_EXT_JUNIT = "androidx.test.ext:junit:${Versions.ANDROIDX_TEST_EXT}"
-    const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.ESPRESSO_CORE}"
+    const val androidxTestRules = "androidx.test:rules:${Versions.Libraries.androidxTest}"
+    const val androidxTestRunner = "androidx.test:runner:${Versions.Libraries.androidxTest}"
+    const val androidxExtJunit = "androidx.test.ext:junit:1.1.2"
+    const val espressoCore = "androidx.test.espresso:espresso-core:3.3.0"
 }

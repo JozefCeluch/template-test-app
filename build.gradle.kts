@@ -5,9 +5,9 @@ plugins {
     id("com.android.application") apply false
     id("com.android.library") apply false
     kotlin("android") apply false
-    id("io.gitlab.arturbosch.detekt") version BuildPluginsVersion.DETEKT
-    id("org.jlleitschuh.gradle.ktlint") version BuildPluginsVersion.KTLINT
-    id("com.github.ben-manes.versions") version BuildPluginsVersion.VERSIONS_PLUGIN
+    id("io.gitlab.arturbosch.detekt") version Versions.BuildPlugins.detekt
+    id("org.jlleitschuh.gradle.ktlint") version Versions.BuildPlugins.ktlint
+    id("com.github.ben-manes.versions") version Versions.BuildPlugins.versions
 }
 
 allprojects {
@@ -27,7 +27,7 @@ subprojects {
 
     ktlint {
         debug.set(false)
-        version.set(Versions.KTLINT)
+        version.set(Versions.Libraries.ktlint)
         verbose.set(true)
         android.set(false)
         outputToConsole.set(true)
@@ -51,7 +51,7 @@ subprojects {
 }
 
 tasks {
-    register("clean", Delete::class.java) {
+    register("clean", Delete::class) {
         delete(rootProject.buildDir)
     }
 

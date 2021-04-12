@@ -1,18 +1,32 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    kotlin("kapt")
 }
 
 android {
-    compileSdkVersion(Sdk.COMPILE_SDK_VERSION)
+//    signingConfigs {
+//
+//        register("release") {
+//            val keystorePropertiesFile = file("../config/keystore/keystore.properties")
+//            val properties = Properties()
+//            properties.load(FileInputStream(keystorePropertiesFile))
+//
+//            keyAlias = properties["keyAlias"] as String
+//            keyPassword = properties["keyPassword"] as String
+//            storeFile = file(properties["storeFile"] as String)
+//            storePassword = properties["storePassword"] as String
+//        }
+//    }
 
+    compileSdkVersion(Versions.Sdk.compileSdk)
     defaultConfig {
-        minSdkVersion(Sdk.MIN_SDK_VERSION)
-        targetSdkVersion(Sdk.TARGET_SDK_VERSION)
+        minSdkVersion(Versions.Sdk.minSdk)
+        targetSdkVersion(Versions.Sdk.targetSdk)
 
-        applicationId = AppCoordinates.APP_ID
-        versionCode = AppCoordinates.APP_VERSION_CODE
-        versionName = AppCoordinates.APP_VERSION_NAME
+        applicationId = "com.github.jozefceluch.templatetestapp.app"
+        versionCode = Versions.App.versionCode
+        versionName = Versions.App.versionName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
@@ -30,6 +44,16 @@ android {
                 "proguard-rules.pro"
             )
         }
+
+        getByName("debug") {
+            debuggable(true)
+            isMinifyEnabled = false
+            applicationIdSuffix(".debug")
+        }
+//        all {
+//            signingConfig = signingConfigs.getByName("release")
+//            setProguardFiles(listOf(getDefaultProguardFile("proguard-android.txt"), "proguard.pro"))
+//        }
     }
 
     lintOptions {
@@ -57,13 +81,13 @@ dependencies {
     implementation(project(":library-android"))
     implementation(project(":library-kotlin"))
 
-    implementation(SupportLibs.ANDROIDX_APPCOMPAT)
-    implementation(SupportLibs.ANDROIDX_CONSTRAINT_LAYOUT)
-    implementation(SupportLibs.ANDROIDX_CORE_KTX)
+    implementation(SupportLibs.androidxAppcompat)
+    implementation(SupportLibs.androidxConstraintLayout)
+    implementation(SupportLibs.androidxCoreKtx)
 
-    testImplementation(TestingLib.JUNIT)
+    testImplementation(TestingLib.junit)
 
-    androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_EXT_JUNIT)
-    androidTestImplementation(AndroidTestingLib.ANDROIDX_TEST_RULES)
-    androidTestImplementation(AndroidTestingLib.ESPRESSO_CORE)
+    androidTestImplementation(AndroidTestingLib.androidxExtJunit)
+    androidTestImplementation(AndroidTestingLib.androidxTestRules)
+    androidTestImplementation(AndroidTestingLib.espressoCore)
 }
