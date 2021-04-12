@@ -5,20 +5,6 @@ plugins {
 }
 
 android {
-//    signingConfigs {
-//
-//        register("release") {
-//            val keystorePropertiesFile = file("../config/keystore/keystore.properties")
-//            val properties = Properties()
-//            properties.load(FileInputStream(keystorePropertiesFile))
-//
-//            keyAlias = properties["keyAlias"] as String
-//            keyPassword = properties["keyPassword"] as String
-//            storeFile = file(properties["storeFile"] as String)
-//            storePassword = properties["storePassword"] as String
-//        }
-//    }
-
     compileSdkVersion(Versions.Sdk.compileSdk)
     defaultConfig {
         minSdkVersion(Versions.Sdk.minSdk)
@@ -50,10 +36,9 @@ android {
             isMinifyEnabled = false
             applicationIdSuffix(".debug")
         }
-//        all {
-//            signingConfig = signingConfigs.getByName("release")
-//            setProguardFiles(listOf(getDefaultProguardFile("proguard-android.txt"), "proguard.pro"))
-//        }
+        all {
+            signingConfig = signingConfigs.getByName("debug")
+        }
     }
 
     lintOptions {
